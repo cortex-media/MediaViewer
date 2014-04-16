@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    id="de.cortex_media.phonegap.mediaviewer"
+    version="1.0.0">
+
+    <engines>
+        <engine name="cordova" version=">=3.2.0" />
+    </engines>
+
+	<name>MediaViewer</name>
+	<description>Open PDFs and Videos on Android via Intents in native apps</description>
+    <author>Cortex Media GmbH</author>
+    <keywords>video,pdf,intent,android</keywords>
+	<license>MIT</license>
+    
+    <js-module src="www/MediaViewer.js" name="MediaViewer">
+		<clobbers target="MediaViewer" />
+	</js-module>
+    
+    <platform name="android">
+		<config-file target="res/xml/config.xml" parent="/*">
+            <feature name="MediaViewer" >
+                <param name="android-package" value="de.cortex_media.phonegap.mediaviewer.MediaViewer"/>
+            </feature>
+        </config-file>
+		
+		<config-file target="AndroidManifest.xml" parent="/*">
+            <uses-permission android:name="android.permission.INTERNET" />
+        </config-file>
+        <source-file src="src/android/MediaViewer.java" target-dir="src/de/cortex_media/phonegap/mediaviewer" />
+	</platform>
+    
+</plugin>
